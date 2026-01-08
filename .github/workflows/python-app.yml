@@ -25,10 +25,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run unit tests
-        run: pytest -v
-
-      - name: Run calculator
-        run: python src/calculator.py
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest -v
 
   deploy:
     needs: build-and-test
